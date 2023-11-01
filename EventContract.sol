@@ -27,22 +27,22 @@ contract Event{
     function TransferToAdmin() public payable{
         require(msg.sender!=EventManager,"event manager cannot send funds to themselves");
         if(msg.value==1 ether){
-        balances[msg.sender]+=msg.value;
-        TotalEntries++;
-        SingleEntries++;
-        SingleAddresses.push(msg.sender);
-        if(balances[msg.sender]>0){
-            AllAddresses.push(msg.sender);
-        }
+            balances[msg.sender]+=msg.value;
+            TotalEntries++;
+            SingleEntries++;
+            SingleAddresses.push(msg.sender);
+            if(balances[msg.sender]>0){
+                AllAddresses.push(msg.sender);
+            }
         }
         else if(msg.value%2==0){
-        balances[msg.sender]+=msg.value;
-        TotalEntries++;
-        TeamEntries++;
-        TeamAddresses.push(msg.sender);
-        if(balances[msg.sender]>0){
-            AllAddresses.push(msg.sender);
-        }
+            balances[msg.sender]+=msg.value;
+            TotalEntries++;
+            TeamEntries++;
+            TeamAddresses.push(msg.sender);
+            if(balances[msg.sender]>0){
+                AllAddresses.push(msg.sender);
+            }
         }
         else{
             revert("Please transfer in multiple of 2 ethers if you are a team, so we can know the number of participants.");
